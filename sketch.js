@@ -33,7 +33,7 @@ function setup() {
 }
 
 function draw() {
-  background("pink");
+  background("green");
   foodObj.display();
 
   fedTime=database.ref('FeedTime');
@@ -46,16 +46,19 @@ function draw() {
   text("Feed your pet dog",750,50)
   text("Hi, I am Tommy",750,300)
  
+  fill("black");
+  textSize(15);
+  if(lastFed>=12){
+    text("Last Feed : "+ lastFed%12 + " PM", 300,50);
+   }else if(lastFed==0){
+     text("Last Feed : 12 AM",350,30);
+   }else{
+     text("Last Feed : "+ lastFed + " AM", 300,50);
+   }
+ 
   drawSprites();
 }
 
-//function to add food in stock
-function addFoods(){
-  foodS++;
-  database.ref('/').update({
-    Food:foodS
-  })
-}
 //function to read food Stock
 function readStock(data){
   foodS=data.val();
@@ -75,5 +78,13 @@ function feedDog(){
   database.ref('/').update({
     Food:foodObj.getFoodStock(),
     FeedTime:hour()
+  })
+}
+
+//function to add food in stock
+function addFoods(){
+  foodS++;
+  database.ref('/').update({
+    Food:foodS
   })
 }
