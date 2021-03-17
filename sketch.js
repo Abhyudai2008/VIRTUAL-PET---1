@@ -44,7 +44,7 @@ function draw() {
   textSize(24)
   fill("blue")
   text("Feed your pet dog",750,50)
-  text("Hi, I am Tommy",750,300)
+  text("Hi, I am Coco",750,300)
  
   fill("black");
   textSize(15);
